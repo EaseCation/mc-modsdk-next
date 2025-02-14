@@ -1,0 +1,27 @@
+{
+    "format_version": 1,
+    "header": {
+        "min_engine_version": [
+            1,
+            18,
+            0
+        ],
+        "uuid": "18d8259b-9fab-41f5-a1f2-4ec582480c31",
+        "version": [
+            0,
+            0,
+            1
+        ]
+    },
+    "modules": [
+        {
+            "type": "data",
+            "uuid": "438a5df1-7f79-4162-9b55-52bcf24efe77",
+            "version": [
+                0,
+                0,
+                1
+            ]
+        }
+    ]
+}
