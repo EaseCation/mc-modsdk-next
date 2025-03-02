@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import mod.server.extraServerApi as serverApi
 
 
@@ -590,7 +591,7 @@ class Entity(object):
         rideComp = serverApi.GetEngineCompFactory().CreateRide(self.entityId)
         return rideComp.GetRiders()
 
-    def changeRiderSeat(self, riderIndex):
+    def changeRiderSeatIndex(self, riderIndex):
         # type: (int) -> bool
         """
         设置骑乘者在当前坐骑上的序号
@@ -707,3 +708,27 @@ class Entity(object):
         """
         rideComp = serverApi.GetEngineCompFactory().CreateRide(tamedEntityId)
         return rideComp.SetEntityRide(playerId, tamedEntityId)
+
+    def isAlive(self):
+        # type: () -> bool
+        """
+        判断生物实体是否存活或非生物实体是否存在
+
+        :return: bool true表示存活或存在, false表示死亡或销毁或区块未加载
+        示例:
+            alive = self.isEntityAlive(entityId)
+        """
+        gameComp = serverApi.GetEngineCompFactory().CreateGame(serverApi.GetLevelId())
+        return gameComp.IsEntityAlive(self.entityId)
+
+    def kill(self):
+        # type: () -> bool
+        """
+        杀死某个Entity
+
+        :return: bool 是否杀死成功
+        示例:
+            self.killEntity(entityId)
+        """
+        gameComp = serverApi.GetEngineCompFactory().CreateGame(serverApi.GetLevelId())
+        return gameComp.KillEntity(self.entityId)

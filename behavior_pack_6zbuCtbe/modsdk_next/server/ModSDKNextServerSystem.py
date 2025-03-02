@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import mod.server.extraServerApi as serverApi
-from modsdk_next.server.next.event.events import *
-from modsdk_next.server.next.World import world
+from next.event.events import *
+from next import system, world
 
 class ModSDKNextServerSystem(serverApi.GetServerSystemCls()):
 
@@ -23,3 +23,7 @@ class ModSDKNextServerSystem(serverApi.GetServerSystemCls()):
             motion = entity.getMotion()
             print("Entity {} has motion {}".format(entityId, str(motion)))
         world.events.entityEffectAdd.subscribe(onEffectAdd)
+        world.gameRules.pvp = False
+        world.gameRules.showCoordinates = True
+        for player in world.getAllPlayers():
+            player.sendMessage("Hello, world!")
